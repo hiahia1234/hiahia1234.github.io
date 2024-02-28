@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>cymple 固件烧录工具</h1>
+
+    <p>固件/PCB作者：Dominocs</p>
+    <a href="https://space.bilibili.com/15245454">UP主的Bilibili主页</a>
+    <div id="main" style="display: none;">
+        <br>
+        <script
+            type="module"
+            src="js/install-button.js">
+        </script>
+        <esp-web-install-button id="installButton" manifest="webflash/manifest.json"></esp-web-install-button>
+        <br>
+        <span>NOTE: 确保你已将其它软件从此串口断开连接 (e.g. 各种串口监视器、Cura)</span>
+    </div>
+    <div id="notSupported" style="display: none;">
+        你的浏览器不支持网页端串口，建议使用Chrome或者Edge
+    </div>
+    <p>网页烧录工具原作者：https://github.com/esphome/esp-web-tools</p>
+    <p>使用小李电子实验室的网页界面 https://github.com/diylxy/LiClockWebFlash/tree/75d78d48cbc4d5a9a0959c8abed977afb9c867c9</p>
+    <p>如果烧不进去，提示wait packet header、sync 2nd等信息，请先检查是否进入烧录模式（串口输出显示 wait for download）。</p>
+    <p>背面的按钮是复位用的，不是BOOT或GPIO0，烧录过程中不要按它。</p>
+
+    
+
+    <script>
+        if(navigator.serial){
+            document.getElementById("notSupported").style.display = 'none';
+            document.getElementById("main").style.display = 'block';
+        } else {
+            document.getElementById("notSupported").style.display = 'block';
+            document.getElementById("main").style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
